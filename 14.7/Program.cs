@@ -24,7 +24,6 @@ namespace _14._7
         {
             get
             {
-                
                 return _array[0];
             }
         }
