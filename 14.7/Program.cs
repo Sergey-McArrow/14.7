@@ -11,14 +11,27 @@ namespace _14._7
         private int[] _array;
         public MyArray (int[] array)
         {
-            _array = array;
             Random random = new Random();
             for (int i = 0; i < array.Length; i++)
             {
                 int numbers = random.Next(10, 100);
                 array[i] = numbers;
             }
-            array.OrderBy(f => f).ToArray();
+
+            int temp;
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                for (int j = i + 1; j < array.Length; j++)
+                {
+                    if (array[i] > array[j])
+                    {
+                        temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
+                    }
+                }
+            }
+            _array = array;
         }
         public int GetMax
         {
@@ -31,10 +44,8 @@ namespace _14._7
         {
             get
             {
-                
                 return _array[_array.Length-1];
             }
-            
         }
     }
 
